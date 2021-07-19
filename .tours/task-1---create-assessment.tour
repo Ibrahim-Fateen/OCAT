@@ -13,13 +13,13 @@
       "line": 12
     },
     {
-      "file": "OCAT/client/pages/Assessments/NewAssessment.jsx",
-      "description": "# Create Form\n\nUse the provided Assessment Info in [docs/assessment_info.md](https://github.com/UC-ITSC/OCAT-Intern-Template/blob/master/docs/assessment_info.md) to create an assessment form for the front-end using the library \"`react-hook-form`\"\n\nInstall and implement \"`react-hook-form`\" by following the [documented instructions](https://www.npmjs.com/package/react-hook-form)\n",
+      "file": "OCAT/client/services/AssessmentService.js",
+      "description": "# Axios Service Request\n\nInside the `AssessmentService.submit()` function, send a POST request to `/api/assessment/submit` using the axios library that contains the assessment data from the front-end form.\n\nThis will go to the back-end Express server in the file [OCAT/server/routes/AssessmentAPI/index.js](./OCAT/server/routes/AssessmentAPI/index.js)",
       "line": 6
     },
     {
-      "file": "OCAT/client/services/AssessmentService.js",
-      "description": "# Axios Service Request\n\nInside the `AssessmentService.submit()` function, send a POST request to `/api/assessment/submit` using the axios library that contains the assessment data from the front-end form.\n\nThis will go to the back-end Express server in the file [OCAT/server/routes/AssessmentAPI/index.js](./OCAT/server/routes/AssessmentAPI/index.js)",
+      "file": "OCAT/client/pages/Assessments/NewAssessment.jsx",
+      "description": "# Create Form\n\nUse the provided Assessment Info in [docs/assessment_info.md](https://github.com/UC-ITSC/OCAT-Intern-Template/blob/master/docs/assessment_info.md) to create an assessment form for the front-end using the library \"`react-hook-form`\"\n\nInstall and implement \"`react-hook-form`\" by following the [documented instructions](https://www.npmjs.com/package/react-hook-form)\n",
       "line": 6
     },
     {
