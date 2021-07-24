@@ -14,9 +14,8 @@ exports.submit = (assessment) => new Promise((resolve, reject) => {
         return reject(new InternalServerError(`Request Error`));
       }
 
-      req.body = assessment;
-
       resolve(body.data);
+      return assessment;
     });
 });
 
