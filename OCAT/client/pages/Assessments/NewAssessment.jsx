@@ -23,7 +23,7 @@ export const NewAssessment = () => {
         Cat Name
         <input type="text" {...register(`cat`)} placeholder="Cat Name..." />
       </div>
-      <div>s
+      <div>
         Date of birth
         <input type="date" {...register(`birth`)} />
       </div>
@@ -31,55 +31,55 @@ export const NewAssessment = () => {
         <li>
           Previous contact with the Cat Judicial System
           <div>
-            <input type="radio" id="previousYes" {...register(`previous`)} value=1 />
+            <input type="radio" id="previousYes" {...register(`previous`)} value="1" />
             <label htmlFor="previousYes"> Yes </label>
           </div>
           <div>
-            <input type="radio" id="previousNo" {...register(`previous`)} value=0 />
+            <input type="radio" id="previousNo" {...register(`previous`)} value="0" />
             <label htmlFor="previousNo"> No </label>
           </div>
         </li>
         <li>
           Physical alteractions with other cats
           <div>
-            <input type="radio" id="lowCatAlteractions" {...register(`catAlteractions`)} value=0 />
+            <input type="radio" id="lowCatAlteractions" {...register(`catAlteractions`)} value="0" />
             <label htmlFor="lowCatAlteractions"> 0 - 3 alteractions </label>
           </div>
           <div>
-            <input type="radio" id="highCatAlteractions" {...register(`catAlteractions`)} value=1 />
+            <input type="radio" id="highCatAlteractions" {...register(`catAlteractions`)} value="1" />
             <label htmlFor="highCatAlteractions"> 3+ alteractions</label>
           </div>
         </li>
         <li>
           Physical altercations with owner (scratching, biting, etc...)
           <div>
-            <input type="radio" id="lowOwnerAlteracions" {...register(`ownerAlteractions`)} value=0 />
+            <input type="radio" id="lowOwnerAlteracions" {...register(`ownerAlteractions`)} value="0" />
             <label htmlFor="lowOwnerAlteractions"> 0 - 10 alteractions </label>
           </div>
           <div>
-            <input type="radio" id="highOwnerAlteractions" {...register(`ownerAlteractions`)} value=1 />
+            <input type="radio" id="highOwnerAlteractions" {...register(`ownerAlteractions`)} value="1" />
             <label htmlFor="highOwnerAlteractions"> 10+ alteractions </label>
           </div>
         </li>
         <li>
           Plays well with dogs
           <div>
-            <input type="radio" id="yesDogs" {...register(`dogs`)} value=0 />
+            <input type="radio" id="yesDogs" {...register(`dogs`)} value="0" />
             <label htmlFor="yesDogs"> Yes </label>
           </div>
           <div>
-            <input type="radio" id="noDogs" {...register(`dogs`)} value=1 />
+            <input type="radio" id="noDogs" {...register(`dogs`)} value="1" />
             <label htmlFor="noDogs"> No </label>
           </div>
         </li>
         <li>
           Hisses at strangers
           <div>
-            <input type="radio" id="yesHiss" {...register(`hisses`)} value=1 />
+            <input type="radio" id="yesHiss" {...register(`hisses`)} value="1" />
             <label htmlFor="yesHiss"> Yes </label>
           </div>
           <div>
-            <input type="radio" id="noHiss" {...register(`hisses`)} value=0 />
+            <input type="radio" id="noHiss" {...register(`hisses`)} value="0" />
             <label htmlFor="noHiss"> No </label>
           </div>
         </li>
