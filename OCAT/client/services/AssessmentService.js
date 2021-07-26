@@ -7,9 +7,9 @@ export class AssessmentService {
       // in a request to the express OCAT/server/routes/Assessment/index.js
       // NOTE: the http.config file automatically adds /api to the front of your url
 
-      let score = parseInt(assessment.previous);
-      score += parseInt(assessment.catAlteractoins) + parseInt(assessment.ownerAlteractons);
-      score += parseInt(assessment.hisses) + parseInt(assessment.dogs);
+      let score = assessment.previous;
+      score += assessment.catAlteractoins + assessment.ownerAlteractons;
+      score += assessment.hisses + assessment.dogs;
       const body = {
         birth: assessment.birth,
         cat: assessment.cat,
