@@ -1,23 +1,22 @@
 import Axios from '../utils/http.config';
 
 export class AssessmentService {
-  static submit(assessment) {
+  static submit(assessment, score, risk_level) {
     try {
       // Choose the correct method, url, and data to send
       // in a request to the express OCAT/server/routes/Assessment/index.js
       // NOTE: the http.config file automatically adds /api to the front of your url
 
-      let score = assessment.previous;
-      score += assessment.catAlteractoins + assessment.ownerAlteractons;
-      score += assessment.hisses + assessment.dogs;
       const body = {
         birth: assessment.birth,
         cat: assessment.cat,
-        instrument: assessment.instrument,
+        risk_level,
         score,
       };
+
       console.log(body);
-      return Axios.post(`/api/assessment/submit`, { body })
+
+      return Axios.post(`/assessment/submit`, { body })
         .then(response => response.data);
     }
     catch (err) {

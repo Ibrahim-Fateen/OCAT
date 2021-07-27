@@ -4,7 +4,7 @@ exports.submit = async (assessment) => {
   // use the bookshelf model Assessments from API/src/microservices/Database to save
   // the assessment data in the PostgreSQL database
   const { score } = assessment;
-  const risk_level = score;
+  const { risk_level } = assessment;
   const { cat } = assessment;
   const { birth } = assessment;
 

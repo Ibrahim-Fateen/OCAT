@@ -8,17 +8,37 @@ export const NewAssessment = () => {
   // create a form that utilizes the "onSubmit" function to send data to OCAT/client/services/AssessmentService.js and
   // then onto the OCAT/server/routes/AssessmentAPI express API
 
+  let score = 0;
+  let risk_level = ``;
+
+  document.addEventListener(`DOMContentLoaded`, event => {
+    const radioElems = document.querySelectorAll(`input[type="radio"]`);
+    radioElems.forEach((radioElem) => { radioElem.addEventListener(`change`, () => {
+      score = 0;
+      count();
+    }); });
+    const count = () => {
+      document.querySelectorAll(`input[type="radio"]:checked`).forEach(radioChecked => {
+        score += parseInt(radioChecked.value, 10);
+      });
+
+      if (score == 0 || score == 1) {
+        risk_level = `low`;
+      } else if (score == 2 || score == 3) {
+        risk_level = `medium`;
+      } else if (score == 4 || score == 5) {
+        risk_level = `high`;
+      }
+    };
+  });
+
   const { handleSubmit, register } = useForm();
   const onSubmit = async (data) => {
-    await AssessmentService.submit(data);
+    await AssessmentService.submit(data, score, risk_level);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} method="post" action="/assessment/new">
-      <div>
-        Instrument Name
-        <input type="text" {...register(`instrument`)} placeholder="eg: Cat Behavioral Instrument" />
-      </div>
       <div>
         Cat Name
         <input type="text" {...register(`cat`)} placeholder="Cat Name..." />
