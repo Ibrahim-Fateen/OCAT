@@ -3,15 +3,13 @@ const { Assessments } = require(`../Database`);
 exports.submit = async (assessment) => {
   // use the bookshelf model Assessments from API/src/microservices/Database to save
   // the assessment data in the PostgreSQL database
-  const { score } = assessment;
-  const { risk_level } = assessment;
-  const { cat } = assessment;
-  const { birth } = assessment;
+  assessment.cat_data.created_at = new Date();
+  const add_this = assessment.cat_data;
 
-  Assessments.save({
-    score, risk_level, cat_name: cat, cat_date_of_birth: birth,
-    created_at: Date.now(),
-  });
+  Assessments.forge({
+    score: add_this.score, risk_level: add_this.risk_level, cat_name: add_this.cat,
+    cat_date_of_birth: add_this.birth, created_at: add_this.created_at,
+  }).save();
 };
 
 exports.getList = () => {
