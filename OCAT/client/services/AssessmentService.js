@@ -1,7 +1,7 @@
 import Axios from '../utils/http.config';
 
 export class AssessmentService {
-  static submit(assessment, score, risk_level) {
+  static submit(assessment) {
     try {
       // Choose the correct method, url, and data to send
       // in a request to the express OCAT/server/routes/Assessment/index.js
@@ -10,8 +10,11 @@ export class AssessmentService {
       const cat_data = {
         birth: assessment.birth,
         cat: assessment.cat,
-        risk_level,
-        score,
+        dogs: assessment.dogs,
+        hisses: assessment.hisses,
+        previous: assessment.previous,
+        catAlteractions: assessment.catAlteractions,
+        ownerAlteractions: assessment.ownerAlteractions,
       };
 
       console.log(cat_data);
