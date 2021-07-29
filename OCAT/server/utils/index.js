@@ -1,3 +1,4 @@
+const client = require(`./client`);
 const config = require(`./Config`);
 const ErrorHandler = require(`./ErrorHandler`);
 const IndexRoute = require(`./IndexRoute`);
@@ -7,5 +8,6 @@ module.exports = {
   ErrorHandler,
   IndexRoute,
   RouteLoader,
+  client,
   config,
 };

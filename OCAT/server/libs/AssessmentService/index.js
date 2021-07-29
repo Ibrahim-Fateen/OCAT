@@ -4,7 +4,8 @@ const { InternalServerError } = require(`restify-errors`);
 exports.submit = (assessment) => new Promise((resolve, reject) => {
   // this function sends a request to the API
   // finish the logic to handle the response when returned from the API
-  client.post(`/assessment/submit`,
+  console.log(`assessment is: `, assessment);
+  client.post(`/assessment/submit`, { assessment },
     (err, req, res, body) => {
       if (err) {
         return reject(err);
@@ -13,8 +14,6 @@ exports.submit = (assessment) => new Promise((resolve, reject) => {
       if (res.statusCode !== 200) {
         return reject(new InternalServerError(`Request Error`));
       }
-
-      req.body = assessment;
 
       resolve(body.data);
     });

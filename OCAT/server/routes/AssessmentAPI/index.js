@@ -3,9 +3,8 @@ const { AssessmentService } = require(`../../libs`);
 
 router.post(`/submit`, (req, res, next) => {
   try {
-    const { assessment } = req.body;
     // call the submit function from the server/libs/AssessmentService
-    AssessmentService.submit(assessment);
+    AssessmentService.submit(req.body);
   } catch (error) {
     next(error);
   }

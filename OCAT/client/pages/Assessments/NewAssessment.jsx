@@ -14,11 +14,7 @@ export const NewAssessment = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} method="post" action="/assessment/new">
-      <div>
-        Instrument Name
-        <input type="text" {...register(`instrument`)} placeholder="eg: Cat Behavioral Instrument" />
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         Cat Name
         <input type="text" {...register(`cat`)} placeholder="Cat Name..." />
