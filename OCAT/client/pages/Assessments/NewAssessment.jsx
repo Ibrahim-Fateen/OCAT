@@ -15,71 +15,115 @@ export const NewAssessment = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        Cat Name
-        <input type="text" {...register(`cat`)} placeholder="Cat Name..." />
+      <div class="form-group row">
+        <label htmlFor="cat" class="col-sm-2 col-form-label">
+          Cat Name
+        </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" {...register(`cat`)} placeholder="Cat Name..." />
+        </div>
       </div>
-      <div>
-        Date of birth
-        <input type="date" {...register(`birth`)} />
+      <div class="form-group row">
+        <label htmlFor="birth" class="col-sm-2 col-form-label">
+          Date of birth
+        </label>
+        <div class="col-sm-10">
+          <input class="form-control" type="date" {...register(`birth`)} />
+        </div>
       </div>
-      <ol>
-        <li>
-          Previous contact with the Cat Judicial System
-          <div>
-            <input type="radio" id="previousYes" {...register(`previous`)} value="1" />
-            <label htmlFor="previousYes"> Yes </label>
+      <div class="form-group row">
+        <label htmlFor="assessment" class="col-sm-2">
+          Assessment:
+        </label>
+        <ol name="assessment" class="col-sm-10">
+          <div class="col-sm-10">
+            <li>
+              Previous contact with the Cat Judicial System
+              <div class="form-group">
+                <input type="radio" class="form-check-input" id="previousYes" {...register(`previous`)} value="1" />
+                <label class="form-check-label" htmlFor="previousYes"> Yes </label>
+              </div>
+              <div class="form-group">
+                <input type="radio" class="form-check-input" id="previousNo" {...register(`previous`)} value="0" />
+                <label class="form-check-label" htmlFor="previousNo"> No </label>
+              </div>
+            </li>
           </div>
-          <div>
-            <input type="radio" id="previousNo" {...register(`previous`)} value="0" />
-            <label htmlFor="previousNo"> No </label>
+          <div class="col-sm-10">
+            <li>
+              Physical alteractions with other cats
+              <div class="form-group">
+                <input
+                  type="radio" class="form-check-input"
+                  id="lowCatAlteractions"
+                  {...register(`catAlteractions`)}
+                  value="0"
+                />
+                <label class="form-check-label" htmlFor="lowCatAlteractions"> 0 - 3 alteractions </label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="radio" class="form-check-input"
+                  id="highCatAlteractions"
+                  {...register(`catAlteractions`)}
+                  value="1"
+                />
+                <label class="form-check-label" htmlFor="highCatAlteractions"> 3+ alteractions</label>
+              </div>
+            </li>
           </div>
-        </li>
-        <li>
-          Physical alteractions with other cats
-          <div>
-            <input type="radio" id="lowCatAlteractions" {...register(`catAlteractions`)} value="0" />
-            <label htmlFor="lowCatAlteractions"> 0 - 3 alteractions </label>
+          <div class="col-sm-10">
+            <li>
+              Physical altercations with owner (scratching, biting, etc...)
+              <div class="form-group">
+                <input
+                  type="radio" class="form-check-input"
+                  id="lowOwnerAlteracions"
+                  {...register(`ownerAlteractions`)}
+                  value="0"
+                />
+                <label class="form-check-label" htmlFor="lowOwnerAlteractions"> 0 - 10 alteractions </label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="radio" class="form-check-input"
+                  id="highOwnerAlteractions"
+                  {...register(`ownerAlteractions`)}
+                  value="1"
+
+                />
+                <label class="form-check-label" htmlFor="highOwnerAlteractions"> 10+ alteractions </label>
+              </div>
+            </li>
           </div>
-          <div>
-            <input type="radio" id="highCatAlteractions" {...register(`catAlteractions`)} value="1" />
-            <label htmlFor="highCatAlteractions"> 3+ alteractions</label>
+          <div class="col-sm-10">
+            <li>
+              Plays well with dogs
+              <div class="form-group">
+                <input type="radio" class="form-check-input" id="yesDogs" {...register(`dogs`)} value="0" />
+                <label class="form-check-label" htmlFor="yesDogs"> Yes </label>
+              </div>
+              <div class="form-group">
+                <input type="radio" class="form-check-input" id="noDogs" {...register(`dogs`)} value="1" />
+                <label class="form-check-label" htmlFor="noDogs"> No </label>
+              </div>
+            </li>
           </div>
-        </li>
-        <li>
-          Physical altercations with owner (scratching, biting, etc...)
-          <div>
-            <input type="radio" id="lowOwnerAlteracions" {...register(`ownerAlteractions`)} value="0" />
-            <label htmlFor="lowOwnerAlteractions"> 0 - 10 alteractions </label>
+          <div class="col-sm-10">
+            <li>
+              Hisses at strangers
+              <div class="form-group">
+                <input type="radio" class="form-check-input" id="yesHiss" {...register(`hisses`)} value="1" />
+                <label class="form-check-label" htmlFor="yesHiss"> Yes </label>
+              </div>
+              <div class="form-group">
+                <input type="radio" class="form-check-input" id="noHiss" {...register(`hisses`)} value="0" />
+                <label class="form-check-label" htmlFor="noHiss"> No </label>
+              </div>
+            </li>
           </div>
-          <div>
-            <input type="radio" id="highOwnerAlteractions" {...register(`ownerAlteractions`)} value="1" />
-            <label htmlFor="highOwnerAlteractions"> 10+ alteractions </label>
-          </div>
-        </li>
-        <li>
-          Plays well with dogs
-          <div>
-            <input type="radio" id="yesDogs" {...register(`dogs`)} value="0" />
-            <label htmlFor="yesDogs"> Yes </label>
-          </div>
-          <div>
-            <input type="radio" id="noDogs" {...register(`dogs`)} value="1" />
-            <label htmlFor="noDogs"> No </label>
-          </div>
-        </li>
-        <li>
-          Hisses at strangers
-          <div>
-            <input type="radio" id="yesHiss" {...register(`hisses`)} value="1" />
-            <label htmlFor="yesHiss"> Yes </label>
-          </div>
-          <div>
-            <input type="radio" id="noHiss" {...register(`hisses`)} value="0" />
-            <label htmlFor="noHiss"> No </label>
-          </div>
-        </li>
-      </ol>
+        </ol>
+      </div>
       <Button variant="primary" type="submit">Submit</Button>
     </form>
   );

@@ -19,15 +19,15 @@ exports.submit = async (assessment) => {
   }
 
   Assessments.forge({
-    score: add_this.score, risk_level: add_this.risk_level, cat_name: add_this.cat,
-    cat_date_of_birth: add_this.birth, created_at: add_this.created_at,
+    cat_date_of_birth: add_this.birth,
+    cat_name: add_this.cat,
+    created_at: add_this.created_at,
+    risk_level: add_this.risk_level,
+    score: add_this.score,
   }).save();
 };
 
-exports.getList = () => {
+exports.getList = () =>
   // use the bookshelf model Assessments from API/src/microservices/Database to fetch
   // the assessment data from the PostgreSQL database
-  const assessments = [];
-
-  return assessments;
-};
+  Assessments.fetchAll().then((resData) => resData.serialize());
