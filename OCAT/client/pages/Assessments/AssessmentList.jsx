@@ -61,10 +61,6 @@ export const AssessmentList = () => {
 
   return (
     <div class="table-responsive">
-      {/*
-          List goes here
-          Please use the library react-table https://www.npmjs.com/package/react-table
-      */}
       <table {...getTableProps()} class="table table-bordered table-hover">
         <thead>
           {headerGroups.map(headerGroup =>
