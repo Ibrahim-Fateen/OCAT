@@ -24,6 +24,3 @@ router.get(`/list`, async (req, res, next) => {
 });
 exports.router = router;
 exports.path = `/api/assessment`;
-
-exports.router = router;
-exports.path = `/api/assessment`;

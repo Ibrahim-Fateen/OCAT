@@ -7,10 +7,6 @@ export const AssessmentList = () => {
 
   const COLUMNS = [
     {
-      Header: `Id`,
-      accessor: `id`,
-    },
-    {
       Header: `Cat Name`,
       accessor: `cat_name`,
     },
@@ -31,8 +27,7 @@ export const AssessmentList = () => {
       accessor: `created_at`,
     },
     {
-      Header: `Deleted at`,
-      accessor: `deleted_at`,
+      Header: `Delete assessment`,
     },
   ];
 

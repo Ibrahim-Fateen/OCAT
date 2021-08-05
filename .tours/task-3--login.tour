@@ -1,0 +1,51 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Task 3 - Supervisor Login",
+  "steps": [
+    {
+      "file": "OCAT/client/App.jsx",
+      "line": 7,
+      "description": "# Router\n\nAdd login.ejs to the route in App.jsx Site Router???"
+    },
+    {
+      "file": "OCAT/client/pages/Login/login.jsx",
+      "line": 1,
+      "description": "# Login html\n\nMake a login form and allow users to submit username and password"
+    },
+    {
+      "file": "OCAT/client/services/LoginService.js",
+      "line": 9,
+      "description": "# Post Request\n\nSend the data to the route on the server using the following url: `/users/login` "
+    },
+    {
+      "file": "OCAT/server/routes/UsersAPI/index.js",
+      "line": 9,
+      "description": "# Server Router\n\nSend the data to the service on the server"
+    },
+    {
+      "file": "OCAT/server/libs/UserService/index.js",
+      "line": 0,
+      "description": "# Service on the server\n\nSend the data to the api router using the following url:"
+    },
+    {
+      "file": "API/src/routes/User/index.js",
+      "line": 4,
+      "description": "# Api router\n\n Send the credentials to the api's service using the following url:"
+    },
+    {
+      "file": "API/src/microservices/User-Service/index.js",
+      "line": 0,
+      "description": "# Api service\n\n Compare the entered credentials with the values stored inside the users table in the database."
+    },
+    {
+      "file": "API/src/microservices/User-Service/index.js",
+      "line": 0,
+      "description": "# Confirmation Token\n\nGenerate a token for the current user once the credentials match and send it back to the front-end."
+    },
+    {
+      "file": "",
+      "line": 0,
+      "description": "# Access\n\nGive access to the whole website when the token is created."
+    }
+  ]
+}

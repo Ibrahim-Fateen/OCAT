@@ -51,7 +51,7 @@ export const NewAssessment = () => {
           </div>
           <div class="col-sm-10">
             <li>
-              Physical alteractions with other cats
+              Physical altercations with other cats
               <div class="form-group">
                 <input
                   type="radio" class="form-check-input"
@@ -90,7 +90,6 @@ export const NewAssessment = () => {
                   id="highOwnerAlteractions"
                   {...register(`ownerAlteractions`)}
                   value="1"
-
                 />
                 <label class="form-check-label" htmlFor="highOwnerAlteractions"> 10+ alteractions </label>
               </div>
