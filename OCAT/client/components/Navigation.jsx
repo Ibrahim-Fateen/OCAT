@@ -8,6 +8,7 @@ export const Navigation = () =>
       <Nav className="me-auto">
         <Nav.Link href="/assessment/list">Dashboard</Nav.Link>
         <Nav.Link href="/assessment/new">New Assessment</Nav.Link>
+        <Nav.Link href="/logout" fixed="right">Log out</Nav.Link>
       </Nav>
     </Navbar>
   </header>;
