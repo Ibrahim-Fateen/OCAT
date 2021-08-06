@@ -35,3 +35,19 @@ exports.getList = () => new Promise((resolve, reject) => {
       resolve(body.data.assessments);
     });
 });
+
+// export delete function and send a request to the api '/assessment/delete'
+exports.delete = (ids) => new Promise((resolve, reject) => {
+  client.post(`/assessment/delete`, { ids },
+    (err, req, res, body) => {
+      if (err) {
+        return reject(err);
+      }
+
+      if (res.statusCode !== 200) {
+        return reject(new InternalServerError(`Request Error`));
+      }
+
+      resolve(body.data);
+    });
+});

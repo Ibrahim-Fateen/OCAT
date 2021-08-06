@@ -51,4 +51,25 @@ module.exports = server => {
       }
     },
   );
+
+  // call the AssessmentService.delete function
+  server.post(
+    `${BASE_URL}/delete`,
+    async (req, res, next) => {
+      try {
+        const { ids } = req.body;
+
+        const status = AssessmentService.delete(ids);
+
+        ResponseHandler(
+          res,
+          `Deleted assessments`,
+          { status },
+          next,
+        );
+      } catch (err) {
+        next(err);
+      }
+    },
+  );
 };

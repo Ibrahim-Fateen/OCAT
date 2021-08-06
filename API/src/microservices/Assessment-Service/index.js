@@ -30,4 +30,16 @@ exports.submit = async (assessment) => {
 exports.getList = () =>
   // use the bookshelf model Assessments from API/src/microservices/Database to fetch
   // the assessment data from the PostgreSQL database
-  Assessments.where({ deleted_at: null }).orderBy(`score`, `ASC`).fetchAll().then((resData) => resData.serialize());
+  Assessments.where({ deleted_at: null }).orderBy(`id`, `ASC`).fetchAll().then((resData) => resData.serialize());
+
+// export a delete function and soft-delete the assessment that matches the id sent.
+exports.delete = (ids) => {
+  // soft delete assessments that match the ids.
+  const now = new Date();
+  const dlt = ids.Selected;
+  for (const id of dlt) {
+    Assessments.where({ id }).save({ deleted_at: now }, { patch: true });
+    console.log(`Deleted!`, id);
+  }
+  return 1;
+};

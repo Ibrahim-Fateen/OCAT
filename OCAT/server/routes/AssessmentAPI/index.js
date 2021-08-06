@@ -22,5 +22,18 @@ router.get(`/list`, async (req, res, next) => {
     next(error);
   }
 });
+
+// add a post request '/delete' and call delete function from server/libs/AssessmentService
+router.post(`/delete`, async (req, res, next) => {
+  try {
+    const status = await AssessmentService.delete(req.body.ids);
+    res
+      .status(200)
+      .json({ status });
+  } catch (error) {
+    next(error);
+  }
+});
+
 exports.router = router;
 exports.path = `/api/assessment`;
