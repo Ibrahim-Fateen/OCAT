@@ -51,13 +51,11 @@ export const AssessmentList = () => {
     const dlt = ids.Selected;
     if (status.status === 1) {
       // remove the assessments from the page
-      const _assessments = clone(assessments);
+      let _assessments = clone(assessments);
       for (const id of dlt) {
-        _assessments.splice(id - 1, 1);
+        _assessments = _assessments.filter((assessment) => assessment.id != id);
       }
       setAssessments(_assessments);
-      console.log(_assessments);
-      // assessments array is changed but data in the table isn't
     } else {
       alert(`There was a problem, please try again.`);
     }
