@@ -1,11 +1,19 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useTable } from 'react-table';
+import { useRowSelect, useSortBy, useTable } from 'react-table';
+import { Button } from 'react-bootstrap';
+import { format } from 'date-fns';
+import { clone } from 'lodash';
 import { AssessmentService } from '../../services/AssessmentService';
+import { Checkbox } from '../../components/Checkbox';
 
 export const AssessmentList = () => {
   const [ assessments, setAssessments ] = useState([]);
 
   const COLUMNS = [
+    {
+      Header: `ID`,
+      accessor: `id`,
+    },
     {
       Header: `Cat Name`,
       accessor: `cat_name`,
@@ -13,6 +21,7 @@ export const AssessmentList = () => {
     {
       Header: `Cat Date of Birth`,
       accessor: `cat_date_of_birth`,
+      Cell: ({ value }) => format(new Date(value), `MM/dd/yyyy`),
     },
     {
       Header: `Risk Level`,
@@ -25,9 +34,7 @@ export const AssessmentList = () => {
     {
       Header: `Created at`,
       accessor: `created_at`,
-    },
-    {
-      Header: `Delete assessment`,
+      Cell: ({ value }) => format(new Date(value), `MM/dd/yyyy h:mm a`),
     },
   ];
 
@@ -39,12 +46,22 @@ export const AssessmentList = () => {
     fetchAssessments();
   }, []);
 
-  const columns = useMemo(() => COLUMNS, []);
+  const onClick = async (ids) => {
+    const status = await AssessmentService.delete(ids);
+    const dlt = ids.Selected;
+    if (status.status === 1) {
+      // remove the assessments from the page
+      let _assessments = clone(assessments);
+      for (const id of dlt) {
+        _assessments = _assessments.filter((assessment) => assessment.id != id);
+      }
+      setAssessments(_assessments);
+    } else {
+      alert(`There was a problem, please try again.`);
+    }
+  };
 
-  const tableInstance = useTable({
-    columns,
-    data: assessments,
-  });
+  const columns = useMemo(() => COLUMNS, []);
 
   const {
     getTableBodyProps,
@@ -52,29 +69,60 @@ export const AssessmentList = () => {
     headerGroups,
     prepareRow,
     rows,
-  } = tableInstance;
+    selectedFlatRows,
+  } = useTable(
+    {
+      columns,
+      data: assessments,
+    },
+    useSortBy,
+    useRowSelect,
+    hooks => {
+      hooks.visibleColumns.push(_columns => [
+        {
+          id: `selection`,
+          Header: ({ getToggleAllRowsSelectedProps }) =>
+            <Checkbox {...getToggleAllRowsSelectedProps()} />,
+          Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />,
+        },
+        ..._columns,
+      ]);
+    },
+  );
 
   return (
-    <div class="table-responsive">
-      <table {...getTableProps()} class="table table-bordered table-hover">
+    <div className="table-responsive">
+      <table {...getTableProps()} className="table table-bordered table-hover">
         <thead>
           {headerGroups.map(headerGroup =>
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column =>
-                <th {...column.getHeaderProps()}>{column.render(`Header`)}</th>)}
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render(`Header`)}
+                  <span>
+                    {column.isSorted ? column.isSortedDesc ? ` 🔽` : ` 🔼` : ``}
+                  </span>
+                </th>)}
             </tr>)}
         </thead>
         <tbody {...getTableBodyProps()}>
           {rows.map(row => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} id={assessments.id}>
                 {row.cells.map(cell => <td {...cell.getCellProps()}>{cell.render(`Cell`)}</td>)}
               </tr>
             );
           })}
         </tbody>
       </table>
+      <div />
+      <Button
+        onClick={() => onClick({ Selected: selectedFlatRows.map((row) => row.original.id) })}
+        variant="primary"
+      >
+        Delete selected rows
+      </Button>
     </div>
   );
 };

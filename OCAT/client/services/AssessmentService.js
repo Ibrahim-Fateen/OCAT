@@ -42,4 +42,16 @@ export class AssessmentService {
       throw new Error(`${err.response.statusText} - ${err.response.data.message}`);
     }
   }
+
+  // Add delete function and post to /assessment/delete
+  static delete(ids) {
+    try {
+      return Axios.post(`/assessment/delete`, { ids })
+        .then(response => response.data.status);
+    }
+    catch (err) {
+      console.log(err.response);
+      throw new Error(`${err.response.statusText} - ${err.response.data.message}`);
+    }
+  }
 }
