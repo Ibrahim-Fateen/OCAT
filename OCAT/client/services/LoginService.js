@@ -7,7 +7,6 @@ export class loginService {
         .then(response => {
           if (response.data.token == 1) {
             localStorage.token = response.data.token;
-            // check response is correct
           }
           return response.data.token;
         });

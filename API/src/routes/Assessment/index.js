@@ -16,12 +16,12 @@ module.exports = server => {
         // call the AssessmentService.submit function from the API/src/microservices/Assessment/ and
         // supply the correct parameters
 
-        AssessmentService.submit(assessment);
+        const returned = await AssessmentService.submit(assessment);
 
         ResponseHandler(
           res,
           `Submitted assessment`,
-          {},
+          { returned },
           next,
         );
       } catch (err) {
@@ -38,7 +38,6 @@ module.exports = server => {
         // verify that your data is making it here to the API by using console.log();
         // call the AssessmentService.getList function from the API/src/microservices/Assessment/
         const assessments = await AssessmentService.getList();
-        console.log(`API router receives: `, assessments);
 
         ResponseHandler(
           res,
