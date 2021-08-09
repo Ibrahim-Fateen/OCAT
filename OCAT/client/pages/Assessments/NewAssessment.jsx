@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import { AssessmentService } from '../../services/AssessmentService';
 
 export const NewAssessment = () => {
@@ -11,6 +12,7 @@ export const NewAssessment = () => {
   const { handleSubmit, register } = useForm();
   const onSubmit = async (data) => {
     await AssessmentService.submit(data);
+    return <Redirect to="/assessment/list" />;
   };
 
   return (
@@ -20,7 +22,7 @@ export const NewAssessment = () => {
           Cat Name
         </label>
         <div class="col-sm-10">
-          <input class="form-control" type="text" {...register(`cat`)} placeholder="Cat Name..." />
+          <input class="form-control" type="text" {...register(`cat`, { required: true })} placeholder="Cat Name..." />
         </div>
       </div>
       <div class="form-group row">
@@ -28,7 +30,7 @@ export const NewAssessment = () => {
           Date of birth
         </label>
         <div class="col-sm-10">
-          <input class="form-control" type="date" {...register(`birth`)} />
+          <input class="form-control" type="date" {...register(`birth`, { required: true })} />
         </div>
       </div>
       <div class="form-group row">
@@ -40,11 +42,22 @@ export const NewAssessment = () => {
             <li>
               Previous contact with the Cat Judicial System
               <div class="form-group">
-                <input type="radio" class="form-check-input" id="previousYes" {...register(`previous`)} value="1" />
+                <input type="radio"
+                  class="form-check-input"
+                  id="previousYes"
+                  {...register(`previous`, { required: true })}
+                  value="1"
+                />
                 <label class="form-check-label" htmlFor="previousYes"> Yes </label>
               </div>
               <div class="form-group">
-                <input type="radio" class="form-check-input" id="previousNo" {...register(`previous`)} value="0" />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="previousNo"
+                  {...register(`previous`, { required: true })}
+                  value="0"
+                />
                 <label class="form-check-label" htmlFor="previousNo"> No </label>
               </div>
             </li>
@@ -56,7 +69,7 @@ export const NewAssessment = () => {
                 <input
                   type="radio" class="form-check-input"
                   id="lowCatAlteractions"
-                  {...register(`catAlteractions`)}
+                  {...register(`catAlteractions`, { required: true })}
                   value="0"
                 />
                 <label class="form-check-label" htmlFor="lowCatAlteractions"> 0 - 3 alteractions </label>
@@ -65,7 +78,7 @@ export const NewAssessment = () => {
                 <input
                   type="radio" class="form-check-input"
                   id="highCatAlteractions"
-                  {...register(`catAlteractions`)}
+                  {...register(`catAlteractions`, { required: true })}
                   value="1"
                 />
                 <label class="form-check-label" htmlFor="highCatAlteractions"> 3+ alteractions</label>
@@ -79,7 +92,7 @@ export const NewAssessment = () => {
                 <input
                   type="radio" class="form-check-input"
                   id="lowOwnerAlteracions"
-                  {...register(`ownerAlteractions`)}
+                  {...register(`ownerAlteractions`, { required: true })}
                   value="0"
                 />
                 <label class="form-check-label" htmlFor="lowOwnerAlteractions"> 0 - 10 alteractions </label>
@@ -88,7 +101,7 @@ export const NewAssessment = () => {
                 <input
                   type="radio" class="form-check-input"
                   id="highOwnerAlteractions"
-                  {...register(`ownerAlteractions`)}
+                  {...register(`ownerAlteractions`, { required: true })}
                   value="1"
                 />
                 <label class="form-check-label" htmlFor="highOwnerAlteractions"> 10+ alteractions </label>
@@ -99,11 +112,25 @@ export const NewAssessment = () => {
             <li>
               Plays well with dogs
               <div class="form-group">
-                <input type="radio" class="form-check-input" id="yesDogs" {...register(`dogs`)} value="0" />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="yesDogs"
+                  {...register(`dogs`, { required: true })}
+                  value="0"
+
+                />
                 <label class="form-check-label" htmlFor="yesDogs"> Yes </label>
               </div>
               <div class="form-group">
-                <input type="radio" class="form-check-input" id="noDogs" {...register(`dogs`)} value="1" />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="noDogs"
+                  {...register(`dogs`, { required: true })}
+                  value="1"
+
+                />
                 <label class="form-check-label" htmlFor="noDogs"> No </label>
               </div>
             </li>
@@ -112,11 +139,24 @@ export const NewAssessment = () => {
             <li>
               Hisses at strangers
               <div class="form-group">
-                <input type="radio" class="form-check-input" id="yesHiss" {...register(`hisses`)} value="1" />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="yesHiss"
+                  {...register(`hisses`, { required: true })}
+                  value="1"
+                />
                 <label class="form-check-label" htmlFor="yesHiss"> Yes </label>
               </div>
               <div class="form-group">
-                <input type="radio" class="form-check-input" id="noHiss" {...register(`hisses`)} value="0" />
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="noHiss"
+                  {...register(`hisses`, { required: true })}
+                  value="0"
+
+                />
                 <label class="form-check-label" htmlFor="noHiss"> No </label>
               </div>
             </li>
