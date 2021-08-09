@@ -38,10 +38,5 @@ exports.login = async (credentials) => {
 
   }
   const token = await checkUser(username, password);
-  // if wrong username error returned:
-  //    return wrong username
-  //  else if wrong password error returned:
-  //    return wrong password
-
   return token;
 };

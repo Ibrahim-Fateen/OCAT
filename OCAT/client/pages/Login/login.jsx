@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { Button } from 'react-bootstrap';
 import { loginService } from '../../services/LoginService';
@@ -19,6 +18,7 @@ export const Login = () => {
       document.getElementById(`usernameHelpBlock`).innerHTML = `Username not found`;
     } else if (response == 1) {
       history.push(`/assessment/list`);
+      window.location.reload(true);
     }
 
   };
@@ -53,5 +53,7 @@ export const Login = () => {
 
 export const Logout = () => {
   localStorage.token = 0;
-  return <Redirect to="/login" />;
+  const history = useHistory();
+  history.push(`/login`);
+  window.location.reload(true);
 };

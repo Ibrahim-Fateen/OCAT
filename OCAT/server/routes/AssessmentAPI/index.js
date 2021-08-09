@@ -1,10 +1,13 @@
 const router = require(`express`).Router();
 const { AssessmentService } = require(`../../libs`);
 
-router.post(`/submit`, (req, res, next) => {
+router.post(`/submit`, async (req, res, next) => {
   try {
     // call the submit function from the server/libs/AssessmentService
-    AssessmentService.submit(req.body);
+    const response = await AssessmentService.submit(req.body);
+    res
+      .status(200)
+      .json({ response });
   } catch (error) {
     next(error);
   }

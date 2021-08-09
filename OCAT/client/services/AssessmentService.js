@@ -7,20 +7,8 @@ export class AssessmentService {
       // in a request to the express OCAT/server/routes/Assessment/index.js
       // NOTE: the http.config file automatically adds /api to the front of your url
 
-      const cat_data = {
-        birth: assessment.birth,
-        cat: assessment.cat,
-        dogs: assessment.dogs,
-        hisses: assessment.hisses,
-        previous: assessment.previous,
-        catAlteractions: assessment.catAlteractions,
-        ownerAlteractions: assessment.ownerAlteractions,
-      };
-
-      console.log(cat_data);
-
-      return Axios.post(`/assessment/submit`, { cat_data })
-        .then(response => response.data);
+      return Axios.post(`/assessment/submit`, { assessment })
+        .then(response => response.data.response);
     }
     catch (err) {
       console.log(err.response);

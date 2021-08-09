@@ -27,7 +27,6 @@ export const App = () => {
       <Route path="/assessment/new" component={NewAssessment} />
       <Route path="/assessment/list" component={AssessmentList} />
       <Route path="/logout" component={Logout} />
-      <Route path="/login" component={Login} />
     </BrowserRouter>
   </SiteWrapper>;
 };
